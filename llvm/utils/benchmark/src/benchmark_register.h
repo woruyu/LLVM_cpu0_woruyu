@@ -4,6 +4,7 @@
 #include <vector>
 
 #include "check.h"
+#include <limits>
 
 template <typename T>
 void AddRange(std::vector<T>* dst, T lo, T hi, int mult) {
