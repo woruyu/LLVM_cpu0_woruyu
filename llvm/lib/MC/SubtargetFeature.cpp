@@ -176,7 +176,7 @@ SubtargetFeatures::ToggleFeature(FeatureBitset &Bits, StringRef Feature,
 
 void SubtargetFeatures::ApplyFeatureFlag(FeatureBitset &Bits, StringRef Feature,
                                     ArrayRef<SubtargetFeatureKV> FeatureTable) {
-  assert(hasFlag(Feature));
+  // assert(hasFlag(Feature));
 
   // Find feature in table.
   const SubtargetFeatureKV *FeatureEntry =

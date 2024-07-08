@@ -1,2 +1,5 @@
 build/**
 .cache/**
+.vscode/**
+build2/**
+tablegen_compile_commands.yml
