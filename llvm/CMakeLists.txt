@@ -300,6 +300,7 @@ set(LLVM_ALL_TARGETS
   X86
   XCore
   Cpu0
+  woruyu
   )
 
 # List of targets with JIT support:

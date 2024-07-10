@@ -1,0 +1,8 @@
+[component_0]
+type = Library
+name = woruyuDesc
+parent = woruyu
+required_libraries = MC
+                     woruyuInfo
+                     Support
+add_to_library_groups = woruyu

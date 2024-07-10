@@ -1,0 +1,24 @@
+[common]
+subdirectories =
+  MCTargetDesc TargetInfo
+
+[component_0]
+# TargetGroup components are an extension of LibraryGroups, specifically for
+#  defining LLVM targets (which are handled specially in a few places).
+type = TargetGroup
+name = woruyu
+parent = Target
+
+[component_1]
+type = Library
+name = woruyuCodeGen
+parent = woruyu
+required_libraries =
+                     CodeGen Core MC
+                     woruyuDesc
+                     woruyuInfo
+                     SelectionDAG
+                     Support
+                     Target
+
+add_to_library_groups = woruyu

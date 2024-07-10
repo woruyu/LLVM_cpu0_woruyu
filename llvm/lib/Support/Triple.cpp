@@ -72,6 +72,7 @@ StringRef Triple::getArchTypeName(ArchType Kind) {
   case renderscript64: return "renderscript64";
   case cpu0:           return "cpu0";
   case cpu0el:         return "cpu0el";
+  case woruyu:         return "woruyu";
   }
 
   llvm_unreachable("Invalid ArchType!");

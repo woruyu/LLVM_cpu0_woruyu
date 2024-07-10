@@ -97,6 +97,7 @@ public:
     renderscript64, // 64-bit RenderScript
     cpu0,           // For Tutorial Backend Cpu0
     cpu0el,
+    woruyu,         //myriscV
     LastArchType = renderscript64
   };
   enum SubArchType {

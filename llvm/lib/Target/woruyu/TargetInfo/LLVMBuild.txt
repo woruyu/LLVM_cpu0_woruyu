@@ -1,0 +1,6 @@
+[component_0]
+type = Library
+name = woruyuInfo
+parent = woruyu
+required_libraries = Support
+add_to_library_groups = woruyu
