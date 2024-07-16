@@ -11,4 +11,5 @@ using namespace llvm;
 #define DEBUG_TYPE "woruyu"
 
 extern "C" void LLVMInitializeworuyuTarget() {
+  RegisterTargetMachine<woruyuTargetMachine> X(getTheworuyuTarget());
 }

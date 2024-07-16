@@ -5,7 +5,13 @@ set (LLVM_TARGET_DEFINITIONS woruyu.td)
 #  your hand code C++ files.
 # woruyuGenRegisterInfo.inc came from woruyuRegisterInfo.td, woruyuGenInstrInfo.inc
 #  came from woruyuInstrInfo.td.
-tablegen(LLVM woruyuenSubtargetInfo.inc -gen-subtarget)
+tablegen(LLVM woruyuGenSubtargetInfo.inc -gen-subtarget)
+tablegen(LLVM woruyuGenDAGISel.inc -gen-dag-isel)
+tablegen(LLVM woruyuGenAsmWriter.inc -gen-asm-writer)
+tablegen(LLVM woruyuGenInstrInfo.inc -gen-instr-info)
+tablegen(LLVM woruyuGenRegisterInfo.inc -gen-register-info)
+tablegen(LLVM woruyuGenMCPseudoLowering.inc -gen-pseudo-lowering)
+tablegen(LLVM woruyuGenCallingConv.inc -gen-callingconv)
 
 # woruyuCommonTableGen must be defined
 add_public_tablegen_target(woruyuCommonTableGen)
