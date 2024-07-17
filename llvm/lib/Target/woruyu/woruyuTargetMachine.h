@@ -16,6 +16,7 @@ public:
                           }
 
   ~woruyuTargetMachine(){};
+  TargetPassConfig *createPassConfig(PassManagerBase &PM) override;
 };
 
 } // namespace llvm

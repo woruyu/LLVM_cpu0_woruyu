@@ -1,5 +1,6 @@
 #include "woruyuTargetMachine.h"
 #include "woruyu.h"
+#include "woruyuISelDAGToDAG.h"
 
 #include "llvm/IR/LegacyPassManager.h"
 #include "llvm/CodeGen/Passes.h"
@@ -12,4 +13,19 @@ using namespace llvm;
 
 extern "C" void LLVMInitializeworuyuTarget() {
   RegisterTargetMachine<woruyuTargetMachine> X(getTheworuyuTarget());
+}
+
+class woruyuPassConfig : public TargetPassConfig {
+public:
+  woruyuPassConfig(woruyuTargetMachine &TM, PassManagerBase &PM)
+      : TargetPassConfig(TM, PM) {}
+
+  bool addInstSelector() override {
+    addPass(new woruyuDAGToDAGISel(getTM<woruyuTargetMachine>(), getOptLevel()));
+    return false;
+  }
+};
+
+TargetPassConfig *woruyuTargetMachine::createPassConfig(PassManagerBase &PM) {
+  return new woruyuPassConfig(*this, PM);
 }

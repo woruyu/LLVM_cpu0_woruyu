@@ -19,6 +19,7 @@ add_public_tablegen_target(woruyuCommonTableGen)
 # woruyuCodeGen should match with LLVMBuild.txt woruyuCodeGen
 add_llvm_target(woruyuCodeGen
   woruyuTargetMachine.cpp
+  woruyuISelDAGToDAG.cpp
   )
 
 # Should match with "subdirectories = MCTargetDesc TargetInfo" in LLVMBuild.txt

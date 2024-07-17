@@ -59,19 +59,19 @@ def : Pat<(load AddrFI:$addr),
 def : Pat<(load GPR:$x),
           (LOAD GPR:$x)>;
 
-def woruyuRET : SDNode<"woruyu::Ret", SDTNone, [SDNPHasChain, SDNPOptInGlue, SDNPVariadic]>;
+// def woruyuRET : SDNode<"woruyuISD::Ret", SDTNone, [SDNPHasChain, SDNPOptInGlue, SDNPVariadic]>;
 
 def JALR : InstI<(outs GPR:$rd),(ins GPR:$rs1, imm12:$imm12), "jalr $rd, ${imm12}(${rs1})",[], IIAlu>;
 
 // def RET : InstI<(outs),(ins), "jalr zero, 0(ra)", [(RRISCVRET)], IIAlu>;
-let isReturn=1, isTerminator=1, hasDelaySlot=1, isBarrier=1, hasCtrlDep=1 in
-def RET : Pseudo<(outs),(ins), [(woruyuRET)]>, PseudoInstExpansion<(JALR ZERO, RA, 0)>;
+// let isReturn=1, isTerminator=1, hasDelaySlot=1, isBarrier=1, hasCtrlDep=1 in
+// def RET : Pseudo<(outs),(ins), [(woruyuRET)]>, PseudoInstExpansion<(JALR ZERO, RA, 0)>;
 
 def SDT_Call : SDTypeProfile<0,1,[SDTCisVT<0,iPTR>]>;
 
-def woruyuCall: SDNode<"woruyu::Call", SDT_Call, [SDNPHasChain, SDNPOptInGlue, SDNPVariadic]>;
+// def woruyuCall: SDNode<"woruyuISD::Call", SDT_Call, [SDNPHasChain, SDNPOptInGlue, SDNPVariadic]>;
 
 // def CALL : InstI<(outs),(ins GPR:$rs1), "jalr ra, 0($rs1)", [(RRISCVCall GPR:$rs1)], IIAlu>;
-def CALL : Pseudo<(outs), (ins GPR:$rs1), [(woruyuCall GPR:$rs1)]>, PseudoInstExpansion<(JALR RA, GPR:$rs1, 0)>{
-  let isCall = 1;
-}
+// def CALL : Pseudo<(outs), (ins GPR:$rs1), [(woruyuCall GPR:$rs1)]>, PseudoInstExpansion<(JALR RA, GPR:$rs1, 0)>{
+//   let isCall = 1;
+// }

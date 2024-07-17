@@ -13,18 +13,16 @@
 #include "llvm/Support/FormattedStream.h"
 #include "llvm/Support/TargetRegistry.h"
 
-
 using namespace llvm;
-
-#define GET_REGINFO_ENUM
-#define GET_REGINFO_MC_DESC
-#include "woruyuGenRegisterInfo.inc"
 
 #define GET_INSTRINFO_MC_DESC
 #include "woruyuGenInstrInfo.inc"
 
 #define GET_SUBTARGETINFO_MC_DESC
 #include "woruyuGenSubtargetInfo.inc"
+
+#define GET_REGINFO_MC_DESC
+#include "woruyuGenRegisterInfo.inc"
 
 static MCRegisterInfo *createworuyuMCRegisterInfo(const Triple &TT) {
   MCRegisterInfo *X = new MCRegisterInfo();

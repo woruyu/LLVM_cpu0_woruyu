@@ -1,0 +1,8 @@
+#ifndef LLVM_LIB_TARGET_WORUYU_WORUYUSUBTARGET_H
+#define LLVM_LIB_TARGET_WORUYU_WORUYUSUBTARGET_H
+#include "llvm/CodeGen/TargetSubtargetInfo.h"
+
+#define GET_SUBTARGETINFO_HEADER
+#include "woruyuGenSubtargetInfo.inc"
+
+#endif// LLVM_LIB_TARGET_WORUYU_WORUYUSUBTARGET_H
