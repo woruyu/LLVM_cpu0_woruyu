@@ -1,6 +1,8 @@
 [common]
 subdirectories =
-  MCTargetDesc TargetInfo
+  MCTargetDesc
+  TargetInfo
+  InstPrinter
 
 [component_0]
 # TargetGroup components are an extension of LibraryGroups, specifically for
@@ -20,5 +22,7 @@ required_libraries =
                      SelectionDAG
                      Support
                      Target
+                     AsmPrinter
+                     woruyuAsmPrinter
 
 add_to_library_groups = woruyu

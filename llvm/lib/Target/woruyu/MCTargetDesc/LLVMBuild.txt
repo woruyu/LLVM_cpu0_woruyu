@@ -5,4 +5,5 @@ parent = woruyu
 required_libraries = MC
                      woruyuInfo
                      Support
+                     woruyuAsmPrinter
 add_to_library_groups = woruyu

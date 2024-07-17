@@ -47,10 +47,19 @@ static MCAsmInfo *createworuyuMCAsmInfo(MCRegisterInfo const &MRI,
   return x;
 }
 
+static MCInstPrinter *createworuyuInstPrinter(Triple const &T,
+                                           unsigned SyntaxVariant,
+                                           MCAsmInfo const &MAI,
+                                           MCInstrInfo const &MII,
+                                           MCRegisterInfo const &MRI) {
+  return new woruyuInstPrinter(MAI, MII, MRI);
+}
+
 extern "C" void LLVMInitializeworuyuTargetMC() {
   TargetRegistry::RegisterMCRegInfo(getTheworuyuTarget(), createworuyuMCRegisterInfo);
   TargetRegistry::RegisterMCInstrInfo(getTheworuyuTarget(), createworuyuMCInstrInfo);
   TargetRegistry::RegisterMCSubtargetInfo(getTheworuyuTarget(),
                                           createworuyuMCSubtargetInfo);
   TargetRegistry::RegisterMCAsmInfo(getTheworuyuTarget(), createworuyuMCAsmInfo);
+  TargetRegistry::RegisterMCInstPrinter(getTheworuyuTarget(), createworuyuInstPrinter);
 }

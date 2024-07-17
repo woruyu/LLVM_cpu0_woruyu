@@ -20,8 +20,10 @@ add_public_tablegen_target(woruyuCommonTableGen)
 add_llvm_target(woruyuCodeGen
   woruyuTargetMachine.cpp
   woruyuISelDAGToDAG.cpp
+  woruyuAsmPrinter.cpp
   )
 
 # Should match with "subdirectories = MCTargetDesc TargetInfo" in LLVMBuild.txt
 add_subdirectory(TargetInfo)
 add_subdirectory(MCTargetDesc)
+add_subdirectory(InstPrinter)
