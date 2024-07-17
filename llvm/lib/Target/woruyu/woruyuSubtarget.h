@@ -1,5 +1,6 @@
 #ifndef LLVM_LIB_TARGET_WORUYU_WORUYUSUBTARGET_H
 #define LLVM_LIB_TARGET_WORUYU_WORUYUSUBTARGET_H
+#include "woruyuISelLowering.h"
 #include "llvm/CodeGen/TargetSubtargetInfo.h"
 
 #define GET_SUBTARGETINFO_HEADER
@@ -8,13 +9,19 @@
 namespace llvm {
 class woruyuTargetMachine;
 class woruyuSubtarget : public woruyuGenSubtargetInfo {
+private:
+woruyuTargetLowering TLInfo;
+
 public:
   woruyuSubtarget(const Triple &TT, StringRef &CPU, StringRef &FS,
-                  const woruyuTargetMachine &TTM);
+                  const TargetMachine &TM);
 
   ~woruyuSubtarget() override {}
 
   void ParseSubtargetFeatures(StringRef CPU, StringRef FS);
+  const woruyuTargetLowering *getTargetLowering() const override {
+    return &TLInfo;
+  }
 };
 } // namespace llvm
 

@@ -23,6 +23,7 @@ add_llvm_target(woruyuCodeGen
   woruyuAsmPrinter.cpp
   woruyuTargetObjectFile.cpp
   woruyuSubtarget.cpp
+  woruyuISelLowering.cpp
   )
 
 # Should match with "subdirectories = MCTargetDesc TargetInfo" in LLVMBuild.txt
