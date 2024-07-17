@@ -21,6 +21,8 @@ add_llvm_target(woruyuCodeGen
   woruyuTargetMachine.cpp
   woruyuISelDAGToDAG.cpp
   woruyuAsmPrinter.cpp
+  woruyuTargetObjectFile.cpp
+  woruyuSubtarget.cpp
   )
 
 # Should match with "subdirectories = MCTargetDesc TargetInfo" in LLVMBuild.txt
