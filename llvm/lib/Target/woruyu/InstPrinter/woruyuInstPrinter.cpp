@@ -20,4 +20,7 @@ void woruyuInstPrinter::printRegName(raw_ostream &OS, unsigned RegNo) const {}
 
 void woruyuInstPrinter::printOperand(const MCInst *MI, unsigned OpNo, raw_ostream &O) {}
 
+void woruyuInstPrinter::printOperand(const MCInst *MI, uint64_t _Address, unsigned OpNum, raw_ostream &O){}
+void woruyuInstPrinter::printOperand(const MCInst *MI, unsigned OpNo, const MCSubtargetInfo &STI, raw_ostream &O, const char *Modifier){}
+
 void woruyuInstPrinter::printMemOperand(const MCInst *MI, int opNum, raw_ostream &O){}
