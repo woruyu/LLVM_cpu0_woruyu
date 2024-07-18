@@ -10,4 +10,5 @@ using namespace llvm;
 
 woruyuSubtarget::woruyuSubtarget(const Triple &TT, StringRef &CPU,
                                  StringRef &FS, const TargetMachine &TM)
-    : woruyuGenSubtargetInfo(TT, CPU, FS),TLInfo(TM, *this) {}
+    : woruyuGenSubtargetInfo(TT, CPU, FS), TLInfo(TM, *this),
+      RegInfo(*this, getHwMode()) {}
