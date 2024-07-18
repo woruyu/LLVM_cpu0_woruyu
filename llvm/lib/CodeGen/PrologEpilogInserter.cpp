@@ -193,7 +193,6 @@ bool PEI::runOnMachineFunction(MachineFunction &MF) {
   calculateSaveRestoreBlocks(MF);
 
   // Handle CSR spilling and restoring, for targets that need it.
-  MF.dump();
   if (MF.getTarget().usesPhysRegsForPEI())
     spillCalleeSavedRegs(MF);
 

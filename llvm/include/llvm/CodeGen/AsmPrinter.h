@@ -295,7 +295,6 @@ public:
   /// Emit the specified function out to the OutStreamer.
   bool runOnMachineFunction(MachineFunction &MF) override {
     SetupMachineFunction(MF);
-    MF.dump();
     EmitFunctionBody();
     return false;
   }

@@ -664,7 +664,6 @@ void SelectionDAGISel::SelectBasicBlock(BasicBlock::const_iterator Begin,
   CurDAG->setRoot(SDB->getControlRoot());
   HadTailCall = SDB->HasTailCall;
   SDB->clear();
-  CurDAG->viewGraph("after: lowing");
   // Final step, emit the lowered DAG as machine code.
   CodeGenAndEmitDAG();
 }
