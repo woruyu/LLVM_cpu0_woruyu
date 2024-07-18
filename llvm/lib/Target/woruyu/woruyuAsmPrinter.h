@@ -7,6 +7,7 @@
 #include "llvm/MC/MCStreamer.h"
 #include "llvm/Support/Compiler.h"
 #include "llvm/Target/TargetMachine.h"
+#include "woruyuMCInstLower.h"
 
 namespace llvm {
 class MCStreamer;
@@ -14,9 +15,9 @@ class MachineInstr;
 class MachineBasicBlock;
 class Module;
 class raw_ostream;
-
 class LLVM_LIBRARY_VISIBILITY woruyuAsmPrinter : public AsmPrinter {
-
+private:
+  woruyuMCInstLower MCInstLowering;
 public:
   explicit woruyuAsmPrinter(TargetMachine &TM,
                             std::unique_ptr<MCStreamer> Streamer)
@@ -26,10 +27,8 @@ public:
     return "woruyu Assmebly Printer";
   }
 
-  virtual bool runOnMachineFunction(MachineFunction &MF) override;
-
   // EmitInstruction() must exists or will have run time error
-  // void EmitInstruction(const MachineInstr *MI) override;
+  void EmitInstruction(const MachineInstr *MI) override;
   // void EmitFunctionEntryLabel() override;
   // void EmitFunctionBodyStart() override;
   // void EmitFunctionBodyEnd() override;

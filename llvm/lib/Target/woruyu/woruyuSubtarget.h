@@ -2,6 +2,7 @@
 #define LLVM_LIB_TARGET_WORUYU_WORUYUSUBTARGET_H
 #include "woruyuFrameLowering.h"
 #include "woruyuISelLowering.h"
+#include "woruyuInstrInfo.h"
 #include "woruyuRegisterInfo.h"
 #include "llvm/CodeGen/TargetSubtargetInfo.h"
 
@@ -14,6 +15,7 @@ class woruyuSubtarget : public woruyuGenSubtargetInfo {
 private:
   woruyuTargetLowering TLInfo;
   woruyuFrameLowering FrameLowering;
+  woruyuInstrInfo InstrInfo;
   woruyuRegisterInfo RegInfo;
 
 public:
@@ -31,6 +33,7 @@ public:
     return &FrameLowering;
   }
 
+  const woruyuInstrInfo *getInstrInfo() const override { return &InstrInfo; }
   const woruyuRegisterInfo *getRegisterInfo() const override {
     return &RegInfo;
   }

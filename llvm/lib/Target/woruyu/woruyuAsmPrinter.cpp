@@ -3,9 +3,17 @@
 #include "llvm/Support/TargetRegistry.h"
 using namespace llvm;
 
-bool woruyuAsmPrinter::runOnMachineFunction(MachineFunction &MF) {}
 
-// void woruyuAsmPrinter::EmitInstruction(const MachineInstr *MI) {}
+void woruyuAsmPrinter::EmitInstruction(const MachineInstr *MI) {
+  MachineBasicBlock::const_instr_iterator I = MI->getIterator();
+  MachineBasicBlock::const_instr_iterator E = MI->getParent()->instr_end();
+
+  do {
+    MCInst TmpMCInst;
+    MCInstLowering.Lower(&*I, TmpMCInst);
+    OutStreamer->EmitInstruction(TmpMCInst, getSubtargetInfo());
+  } while (++I != E);
+}
 
 // void woruyuAsmPrinter::EmitFunctionEntryLabel() {}
 
