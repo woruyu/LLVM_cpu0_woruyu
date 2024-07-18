@@ -14,13 +14,35 @@ using namespace llvm;
 #define PRINT_ALIAS_INSTR
 #include "woruyuGenAsmWriter.inc"
 
-void woruyuInstPrinter::printInst(MCInst const *MI, raw_ostream &O, StringRef Annot, MCSubtargetInfo const &STI) {}
+void woruyuInstPrinter::printInst(MCInst const *MI, raw_ostream &O,
+                                  StringRef Annot, MCSubtargetInfo const &STI) {
+  printInstruction(MI, O);
+}
 
-void woruyuInstPrinter::printRegName(raw_ostream &OS, unsigned RegNo) const {}
+void woruyuInstPrinter::printRegName(raw_ostream &OS, unsigned RegNo) const {
+  OS << getRegisterName(RegNo);
+}
 
-void woruyuInstPrinter::printOperand(const MCInst *MI, unsigned OpNo, raw_ostream &O) {}
+void woruyuInstPrinter::printOperand(const MCInst *MI, unsigned OpNo,
+                                     raw_ostream &OS) {
+  const MCOperand &Op = MI->getOperand(OpNo);
+  if (Op.isReg()) {
+    printRegName(OS, Op.getReg());
+    return;
+  }
 
-void woruyuInstPrinter::printOperand(const MCInst *MI, uint64_t _Address, unsigned OpNum, raw_ostream &O){}
-void woruyuInstPrinter::printOperand(const MCInst *MI, unsigned OpNo, const MCSubtargetInfo &STI, raw_ostream &O, const char *Modifier){}
+  if (Op.isImm()) {
+    OS << Op.getImm();
+    return;
+  }
 
-void woruyuInstPrinter::printMemOperand(const MCInst *MI, int opNum, raw_ostream &O){}
+  Op.getExpr()->print(OS, &MAI, true);
+}
+
+void woruyuInstPrinter::printMemOperand(const MCInst *MI, int opNum,
+                                        raw_ostream &O) {
+  printOperand(MI, opNum + 1, O);
+  O << "(";
+  printOperand(MI, opNum, O);
+  O << ")";
+}
