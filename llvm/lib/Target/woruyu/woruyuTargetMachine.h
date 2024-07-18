@@ -29,7 +29,9 @@ public:
   TargetLoweringObjectFile *getObjFileLowering() const override {
     return TLOF.get();
   }
+  const woruyuSubtarget *getSubtargetImpl(const Function &F) const override;
   TargetPassConfig *createPassConfig(PassManagerBase &PM) override;
+  
 };
 
 } // namespace llvm

@@ -15,6 +15,9 @@ extern "C" void LLVMInitializeworuyuTarget() {
   RegisterTargetMachine<woruyuTargetMachine> X(getTheworuyuTarget());
 }
 
+const woruyuSubtarget*
+woruyuTargetMachine::getSubtargetImpl(const Function &F) const { return Subtarget.get(); }
+
 class woruyuPassConfig : public TargetPassConfig {
 public:
   woruyuPassConfig(woruyuTargetMachine &TM, PassManagerBase &PM)
